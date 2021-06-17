@@ -652,7 +652,11 @@ class AudioPlayer {
           initialSeekValues: _initialSeekValues);
     } else {
       // This will implicitly load the current audio source.
-      return await _setPlatformActive(true);
+      try {
+        return await _setPlatformActive(true);
+      } catch (error) {
+        throw Exception(error);
+      }
     }
   }
 
